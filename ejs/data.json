@@ -1,0 +1,46 @@
+{
+  "cats": {
+    "name": "Cute Cats",
+    "followers": 12000,
+    "following": 150,
+    "posts": [
+      {
+        "image": "https://images.unsplash.com/photo-1518791841217-8f162f1e1131",
+        "likes": 340,
+        "comments": 45
+      },
+      {
+        "image": "https://images.unsplash.com/photo-1592194996308-7b43878e84a6",
+        "likes": 512,
+        "comments": 78
+      },
+      {
+        "image": "https://images.unsplash.com/photo-1601758064130-0c3c0a5f1b7c",
+        "likes": 290,
+        "comments": 32
+      }
+    ]
+  },
+  "dogs": {
+    "name": "Lovely Dogs",
+    "followers": 18000,
+    "following": 220,
+    "posts": [
+      {
+        "image": "https://images.unsplash.com/photo-1517423440428-a5a00ad493e8",
+        "likes": 620,
+        "comments": 91
+      },
+      {
+        "image": "https://images.unsplash.com/photo-1558788353-f76d92427f16",
+        "likes": 480,
+        "comments": 66
+      },
+      {
+        "image": "https://images.unsplash.com/photo-1583511655936-5261c7d4f89b",
+        "likes": 710,
+        "comments": 104
+      }
+    ]
+  }
+}
