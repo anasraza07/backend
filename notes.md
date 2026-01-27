@@ -73,7 +73,7 @@ req.query se access hojaati hain saari queries, isko ham aksar use krte hain for
 - EJS (embedded javascript templates) eik tarh se html pages banaane ka  blueprint hai jese variable path parameters se bht saare routes bante hain aese hi ejs tool ka use krke ham bht saaare eik jese dikhne waale html pages banaate hain different info de kr aur is mein js logic bhi ham use kr skte hain
 - ejs ko import krne ki zarurat nhi bcuz expressjs by default import krleta hai ejs ko internally
 npm init -y = saare options default set hojaate hain 
-using ejs = app.set("view engine", "ejs"); ejs use krne ke liye ham ye line likhte hain aur ejs ko as a template engine set krte hain
+using ejs = `app.set("view engine", "ejs");` ejs use krne ke liye ham ye line likhte hain aur ejs ko as a template engine set krte hain
 app.set = ye function kch bhi set krne ke liye use hota hai in expressjs
 - views naam se folder banaao aur phr uske andr files create kro .ejs extension ke sth aur usko req ke andr render krwao using `res.render` just like this `res.render("home.ejs");` expressjs automatically ejs files ke liye views ka folder hi dekhta hai current directory mein
 - `app.set("views", path.join(__dirname, "/views"));` = ye line likh ke ham views ko set krte hain apne directory ke views folder se yaani phr server kahi se bhi run ho, express views folder ko apni directory mein hi dhundega aur kahi nhi aur iske liye path ko bhi import krna parta hai jo ke khud eik package hai nodejs ke sth aata hai eik tarh se built-in utility hai file aur directory ke sth kaam krne ke liye
@@ -83,3 +83,17 @@ passing data to ejs = jb database se koi data aata hai to isko backend se pass k
 - conditional statement, control-flow and loops in ejs = in sbke liye 
 `<% %>` ye waale tags use hote hain inko scriptlet bhi kehte hain yaani for writing javascript har line pr ye opening and closing tags aayenge jo line js ka part hogi
 - database se aane waale data ko ejs mein pass krne ke liye ham pehle require krte hain aur phr pass krke us data ko use karte hain
+- error ke liye ham alag se bhi eik file error.ejs banaake coditions add krke render krwa skte hain
+- includes = isko ham sub templates ke liye use krte hain jese ejs file to poora html page banaata hai but agr same header hai bht saare pages ka to ham views ke andr hi eik folder mein header.ejs file banaa ke usko har file mein include kr skte hain using includes kch is tarh `<%- include("includes/head.ejs") %>`
+GET and POST request = get request se data url mein dikhta hai so secure nhi hota aur url ki length limited hoti haii, ham query string mein data bhejte hain aur sirf string mein hi data bhej skte hain. Jbke post request create/update wagera ke liye use hoti hai aur iski koi limited nhi bcuz yahan req.body mein data bheja jaata hai aur any type of data hoskta hai
+post request = post request mein data access krne ke liye pehle parse krna prta hai bcuz express direct nhi smjh paata req.body ka data aur undefined return krta hai so ham parse ke liye ye line add krte hain 
+`app.use(express.urlencoded({ extended: true }));` is se hota ye hai ke phr kisi bhi req.body mein url encoded data aaye to express usko parse krke smmjh ke re.body mein convert krdeta hai but agr json data aajaye to uske liye eik aur line likhte hain `app.use(express.json());` jis se express json data bhi parse krke smjh leta hai
+url encoded data = wohi kehlaata hai jo user ke data mein spaces aur special characters ko symbols mein change krke eik hi line mein krke form bharte waqt bheja jaata hai taake koi error naa aaye
+- req.body = by default kisi bhi type ka data return nhii krta jb tk ham middlewares naa likhen aur define naa karen ke kis type ka data hai tb hii woo parse krke smjh ke data return karega
+
+- REST (representational state transfer) = acrhitectural style hai jo apis aur server create krne ke liye kch rules define krta haii aur ham un rules ko follow krke jo apis banaate hain usko restful apis kehte hain 
+- restful apis crud operations perform krti hain jese create read delete aur update
+- rest apis best practices = nouns use kro verb nhi, json data accept aur return kro, versioning use kro, collections plural rkho, sirf related cheezen hi nested hon (bht deep nhi), errors properly handle kro codes aur msgs helpful ho, filtering sorting pagination allow kro, security ka dhyan rkho, caching use kro
+- one line rule = rest api aesi design ho jo without documentation bhii smjh aajaye
+- get means to retreive resources, post means to create new content, put means to update existing data, patch means to update existing data partially, delete means to remove data
+- resource = eik term hai jis pe ham crud perform krte hain jese twitter ke liye tweets hota hai

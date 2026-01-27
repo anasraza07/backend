@@ -13,11 +13,6 @@
         "image": "https://images.unsplash.com/photo-1592194996308-7b43878e84a6",
         "likes": 512,
         "comments": 78
-      },
-      {
-        "image": "https://images.unsplash.com/photo-1601758064130-0c3c0a5f1b7c",
-        "likes": 290,
-        "comments": 32
       }
     ]
   },
@@ -35,11 +30,6 @@
         "image": "https://images.unsplash.com/photo-1558788353-f76d92427f16",
         "likes": 480,
         "comments": 66
-      },
-      {
-        "image": "https://images.unsplash.com/photo-1583511655936-5261c7d4f89b",
-        "likes": 710,
-        "comments": 104
       }
     ]
   }
