@@ -97,3 +97,25 @@ url encoded data = wohi kehlaata hai jo user ke data mein spaces aur special cha
 - one line rule = rest api aesi design ho jo without documentation bhii smjh aajaye
 - get means to retreive resources, post means to create new content, put means to update existing data, patch means to update existing data partially, delete means to remove data
 - resource = eik term hai jis pe ham crud perform krte hain jese twitter ke liye tweets hota hai
+- `app.use(express.static(path.join(__dirname, "/public")))` = public folder ke andr jo bhi files hain unko browser ke liye directly accessible banaane ke liye ham ye line likhte hain
+- public folder = static files ka ghr jese html css js images etc
+- res.redirect = different pages ko connect krne ke liye 
+`res.redirect([status,], path)` method use krte hain jo apne kaam ke sth redirect bhi krta hai jese agr new post create krwane ke baad all posts waale page pr jaana ho to wahan ham iska use karenge, by default ye status code 302 return krta hai aur get ki hi request bhejta hai but status code ham change kr skte hain with first optional parameter
+- 3 se start hone waale status codes redirection, content moves ke hote hain, 4 se start hone waale user ki taraf se errors ke hote hain aur 5 se start hone waale server ke internally errors hote hain
+- uuid = eik acha package hai for unique id, uuid means universally unique identiifier, id is identifier. Wese to har database id provide krta hai but uuid bhi ham aksar use krte hain jahan database naa ho ya kisi aur waja se
+- form se sirf 2 method bheje jaa skte hain so baaqi delete, patch wagera bhejne ke liye eik library use krte hain jo hai method-override
+- method-override = library hai jo form ke get ya post method ko convert krke aapke diye gaye method mein change krta hai bs action link ke aage `?_method=DELETE` ye add krna prta hai aur backend mein library import krke middleware add krna prta hai
+- is tarh ham client se server pr wo http verbs use krke req bhej skte hai jo jahan client support bhi nhi krta jese in forms
+- express routes ko top to bottom check krta hai isi liye order sahi hona chahiye bht matter krta hai ye so pehle hamesha static routes, phr semi-dynamic aur phr full-dynamic routes jese 
+/posts/new
+/posts/edit
+/posts/:id/comments
+/posts/:id/
+- so inshort dynamic route hamesha sbse end mein aana chahiye
+
+- Database = jahan ham apna data store krte hain using node aur ye bhi backend ka hi eik part hai
+- mySQL = ye eik database hai yaani smjho eik folder hai jahan bht saarii files store hain aur ham direct isko access nhi kr skte isko use krne aur crud perform krne ke liye we use SQL jo khud eik language hai iske through ham apne mysql db se baat krte hain
+- database eik collection of data haii jo bht saara data store krta hai aur security and scalability jese features provide krta haii aur us se data ko insert, delete, search wagera krna bht easy hojaata hai
+- DBMS = bs database ke ooper eik layer hai jo operations and functions related to db manage krtii haii jese sql queries
+- sql db = relational database hota hai jahan data table form mein store hota hai jese mySql, oracle, postgreSql aur in sb mein sql langugae use hoti hai
+- noSql db = yahan sql language use nhi hoti different databases mein different languages use hoti hain jese mongodb yahan JS use hota hai aur noSql mein table form nhi balke document ya key-value ya graph form mein data store hota hai 
