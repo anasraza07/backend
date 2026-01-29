@@ -118,4 +118,48 @@ url encoded data = wohi kehlaata hai jo user ke data mein spaces aur special cha
 - database eik collection of data haii jo bht saara data store krta hai aur security and scalability jese features provide krta haii aur us se data ko insert, delete, search wagera krna bht easy hojaata hai
 - DBMS = bs database ke ooper eik layer hai jo operations and functions related to db manage krtii haii jese sql queries
 - sql db = relational database hota hai jahan data table form mein store hota hai jese mySql, oracle, postgreSql aur in sb mein sql langugae use hoti hai
-- noSql db = yahan sql language use nhi hoti different databases mein different languages use hoti hain jese mongodb yahan JS use hota hai aur noSql mein table form nhi balke document ya key-value ya graph form mein data store hota hai 
+- noSql db = yahan sql language use nhi hoti different databases mein different languages use hoti hain jese mongodb yahan JS use hota hai aur noSql mein table form nhi balke document ya key-value ya graph form mein data store hota hai
+- database ki zaban mein table ko relation bhi kehte hain 
+- mongodb = nosql database hai aur expressjs ke sth isko use krna bht popular option hai
+- mongo shell = eik CLI ki tarh hai jese ham node likh ke js cli mein chale jaate hain aur phr JS code likh skte hain commands likh skte hain wese hi mongo shell hai jiska use krke ham database ki queries likh skte hain commands likhte hain aur mongo shell internally js code ko bhi recognize krta hai yaani bht saari cheezen js ki chalti hain shell mein
+- mongodb community server = actual database engine jo computer pr database run krta hai aur background mein chalta hai iske bagair compass, shell, mongoose kch kaam nhi karega
+- mongodb compass = gui tool to operate database
+- mongo shell (mongosh) = command line yaani terminal se operate krna
+- mongodb atlas = online mongodb (cloud) isko use krne se database computer pr run nhi hota balke internet pr mongodb servers pr run hota hai, projects aur deployment ke liye isko use krte hain
+- mongodb 2 tarh se run hota hai eik to service mode se auto-start hota hai aur `mongod` command se manually har baar likhna prta hai
+- `mongod` = is command se server start hota hai agr run naa horaha ho wrna install ke baad automatically bhi on hojaata hai if checked
+- sbse pehle to `mongosh` command se ham mongo shell mein enter hote hain, `help` se saari commands hamein milti hain, `show dbs` se hamein databases milte hain isi tarh `show collection` se collections milte hain agr hon, `quit` ya `exit` se ham mongo shell se bahar aate hain, `use <dbName>` command se ham current database send krte hain
+- database permananetly set krne ke liye uske andr data hona zaroorii hai wrna shell se bahar aane pr delete hojaata hai bcuz temporary hi set hota hai pehle
+- test database bhi temporary hota hai baaqi admin, config, local ye sb by default add hote hain but ham in mein kaam nhi krte koi data add nhi krte alag se database banaate hain
+- `db` command se apna current database check krte hain
+- BSON Data = mongodb bson format mein data store krta hai, kch kch cheezen json data mein ineffecient hain jese space bht leta hai, data types limited hain aur text based format hota hai to parse krna difficult hojaata hai so in sb ko bson data format solve krta hai space bhi kam leta hai aur bht saari data types hoti hain jese data bhi save krwa skte hain unlike in json. But ham mongodb ko js obj form mein hi data denge baaqi wo khud bson mein convert krke data store krta hai so json utf-8 ki encoding krta hai jbke bson binary format mein krta hai jo sirf machine smjh skti hai
+- documents = mongodb mein data document form mein store hota hai in key-value pair 
+- bht saare documents mil kr eik collection bante hain aur bht saari collections database mein hoti hain so kch yu ye sb kaam krta hai
+- json format ya js object mein jo data hota hai usko bhi eik document keh skte hain aur wo memory mein save hote waqt bson mein convert hota hai 
+- insert in db = 2 methods use hote hain .insertOne({ key: value }) aur insertMany(array Of Documents)
+- db.collection.insertOne = single document insert krta hai in a collection aur agr collection exist nhi krti to automatically collection create krke insertedId return krta hai jo unique hoti hai aur automatically insert hoti hai har document mein _id ke naam se
+- db.collection.find() = se poore collection ka data return krta hai
+- sql databases mein hamein pehle schema add krna prta hai ke hamari table row mein kon kon se columns hongay aur wohi data ham add kr skte hain agr naya column add krna ho to schema change krna prta hai but mongodb mein aesa nhi hai direct direct sb kaam chalta hai
+- insertMany([{}, {}]) = multiple data insert krne ke liye use krte hain eik array aur uske andr har document ke liye alag object is tarh hamein insertedIds ka bhi obj return mein milta hai  
+- find in db = db.collection.find() se to collection ka poora data hamein milta hai but ham iske sth sth specific queries bhi find kr skte hain key-value pair de ke like db.collection.find({key: value}) phr sirf wohi data aayega jis mein same key-value pair hoga
+- findOne = sbse pehla jo find ho wo documnet return milta hai using 
+db.collection.findOne({key: value})
+- find aur findOne mein ye difference hai ke find() cursor deta hai yaani uska output array mein milta hai aur wo array reference hota hai original ka wo us original ko point krta hai jbke findOne return mein actual document deta hai
+- ham eik se zaada key-value pairs se bhi find kr skte hain kisi specific data yaani document ko
+- find operators = har operator se pehle $ sign lagta hai aur eik aur bracket mein inko pass krte hain jese `db.collection.find({key: {$gt: value}})` yaani jahan greater than this value ho wo document le aao
+- $in = isi tarh in operator hota hai jahan ham array of values dete hain koii bhi value agr match kr jaaye jese db.collection.find({city: {$in: [value1, value2, ... valueN]}})
+- $or = isi tarh logical operators bhi use hote hain jese $or krke eik array denge iske andr objects jin mein se jo match kr jaaye wo document return mein aajayega
+- update in db = iske liye kch methods hain jese updateOne(), updateMany(), replaceOne() etc.
+- updateOne() = iske andr ham pehle filter krte hain ke kis document ko update krna hai aur phr updated obj set krte hain using $set operator before 2nd parameter with key-value pair jo update krna hai, 3rd parameter bhi hota hai options ka wo baad mein dekhenge
+- updateMany() = bhi same tarh use hota hai bs wo eik se zaada documents ko update krta hai
+- replaceOne = completely replace krta hai yaani doosri key values add krdeta hai document mein aur sirf eik field nhi balke sb se replace krdeta hai
+- return mein ye sb methods modified count dete hain yaani kitne documents ko modify kia wo bataate hain 
+- nesting = internal nested key ko access krne ke liye ham string use krte hain yaani in quotation `""` like `{ "performance.marks": 88 }` is tarh ham kr skte hain iske bagair internally nested key access nhi hogi
+- deleteOne and deleteMany = same tarh work krte hain bs find krke delete krte hain aur return mein deletedCount milta hai yanii jitne documents delete hue
+- collection ko empty krne ke liye ham empty obj dete hain as a condition jis se sb delete hojaata hai like `db.collection.deleteMany({})`
+- db.dropDatabase() = current database delete krne ke liye ye method use hota hai aur return mein hamein dropped database ka naamd milta hai
+
+- Mongoose = eik library hai jo mongodb aur nodejs runtime environment ke beech connection create krti hai bcuz ham har waqt mongo shell use nhi kr skte for our development based web apps. Ye eik ODM library hai yaani object data modelling library
+- mongoose ka use krke ham aur effecient tareeqe se backend aur database likh skte hain, schema feature bhi is mongoose mein hota hai like in sql
+- mongoose ko install krke ham connect krte hain mongodb se with url aur wo url localhost ki tarh hota hai jo database server computer pr run horaha hota hai us se connect krna prta hai mongoose ko so that ham crud operations perform kr paayen
+- mongoose ko connect krna ye eik asynchronous kaam hai bcuz har wo kaam jo alag se time leta ho aur line se code mein naa chalta ho usko kehte hain asynchronous aur uske liye async, await, then catch wagera use krte hain so ham yahan bhi async function mein connect krwayenge 
